@@ -1,0 +1,9 @@
+.btn-primary {
+  background-color: #15803D;
+  color: white;
+  border: none;
+}
+/*  bg-[#15803D] btn-outline border-[#15803D] text-white btn-active border-none  */
+.btn-outline-green{
+    border: #15803D;
+}
