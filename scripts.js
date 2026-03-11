@@ -85,25 +85,28 @@ const displayTrees = (trees) => {
 
     trees.forEach(tree => {
         const card = document.createElement('div');
-        card.className = "card bg-white shadow-sm";
+        card.className = "card bg-white shadow-sm w-full mx-auto";
         card.innerHTML = `
-            <figure class="overflow-hidden rounded-xl p-3 ">
+            <figure class="overflow-hidden rounded-xl m-3 ">
                 <img
                 src=${tree.image}
                 alt=${tree.name} 
                 title=${tree.name} 
-                class="h-40 w-full object-cover cursor-pointer rounded-xl"
+                class="h-40 w-full object-cover  cursor-pointer "
                 onclick="openTreeModal(${tree.id})"
             />
             </figure>
             <div class="card-body">
                 <h2 class="card-title text-[#15803D]" onclick="openTreeModal(${tree.id})">${tree.name}</h2>
                 <p class="text-start line-clamp-2 text-black/60">${tree.description}</p>
+                <div class="flex flex-wrap lg:justify-around">
                 <div class="badge bg-[#b8e6c8] text-[#15803D]">${tree.category}</div>
+                    <h2 class="font-bold text-xl text-[#15803D]">$${tree.price}</h2>
+                </div>
 
                 <div class="card-actions justify-between items-center">
-                    <h2 class="font-bold text-xl text-[#15803D]">$${tree.price}</h2>
-                    <button onclick="addToCart(${tree.id} , '${tree.name}',${tree.price})" class="btn bg-[#15803D] border-none text-white">Add To Cart</button>
+                    
+                    <button onclick="addToCart(${tree.id} , '${tree.name}',${tree.price})" class="btn bg-[#15803D] border-none text-white w-full rounded-full">Add To Cart</button>
                 </div>
             </div>
         `
@@ -151,6 +154,7 @@ const addToCart = (id,name,price) => {
 const updateCart = () => {
     const cartContainer = document.getElementById('cartContainer');
     const emptyCartMessage = document.getElementById('emptyCartMessage');
+    const totalPrice = document.getElementById('totalPrice');
     
     cartContainer.innerHTML = "";
 
@@ -161,7 +165,6 @@ const updateCart = () => {
     }
     emptyCartMessage.classList.add('hidden');
 
-    const totalPrice = document.getElementById('totalPrice');
     let total = 0;
     cart.forEach(item => {
         total += item.price * item.quantity;
