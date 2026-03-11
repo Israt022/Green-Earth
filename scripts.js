@@ -85,7 +85,7 @@ const displayTrees = (trees) => {
 
     trees.forEach(tree => {
         const card = document.createElement('div');
-        card.className = "card bg-white shadow-sm w-full mx-auto";
+        card.className = "card bg-white shadow-sm w-[80%] md:w-[95%] mx-auto";
         card.innerHTML = `
             <figure class="overflow-hidden rounded-xl m-3 ">
                 <img
